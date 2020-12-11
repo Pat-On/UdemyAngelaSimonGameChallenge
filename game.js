@@ -9,13 +9,21 @@ let userClickedPattern = [];
 let level = 0;
 var start = false;
 
-$(document).keypress(function(){
+$(document).touchstart(function(){
   if(!start) {
     $("#level-title").text("Level: " + level);
     nextSequence();
     start = true;
   }
 });
+
+// $(document).keypress(function(){
+//   if(!start) {
+//     $("#level-title").text("Level: " + level);
+//     nextSequence();
+//     start = true;
+//   }
+// });
 
 function nextSequence() {
   let randomNumber = Math.floor(Math.random() * 4);
@@ -33,7 +41,16 @@ function nextSequence() {
 
 // nextSequence();
 
-$(".btn").click(function() {   // Why she used here function not a handler name.
+// $(".btn").click(function() {   // Why she used here function not a handler name.
+//   var userChosenColour = $(this).attr("id");
+//   userClickedPattern.push(userChosenColour);
+//   console.log(userClickedPattern);
+//   playSound(userChosenColour);
+//   animatePress(userChosenColour);
+//   checkAnswer(userClickedPattern.length - 1);
+// });
+
+$(".btn").touchstart(function() {   // Why she used here function not a handler name.
   var userChosenColour = $(this).attr("id");
   userClickedPattern.push(userChosenColour);
   console.log(userClickedPattern);
@@ -41,6 +58,7 @@ $(".btn").click(function() {   // Why she used here function not a handler name.
   animatePress(userChosenColour);
   checkAnswer(userClickedPattern.length - 1);
 });
+
 
 function playSound(name) {
   var audio = new Audio("sounds/" + name + ".mp3");
@@ -83,29 +101,7 @@ function checkAnswer(currentLevel) {
     $("#level-title").text("Game Over, Press Any Key to Restart");
     startOver();
   }
-}
-
-// Keyboard detection
+};
 
 
-
-
-
-//
-// funtion handler(){
-//   // let userChosenColor =
-// }
-
-// if("red"===gamePattern[gamePattern.length-1]){
-//   $("#red").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
-// } else if("blue"===gamePattern[gamePattern.length-1]) {
-//   $("#blue").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
-// } else if("green"===gamePattern[gamePattern.length-1]) {
-//   $("#green").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
-// } else if("yellow"===gamePattern[gamePattern.length-1]) {
-//   $("#yellow").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
-// };
-
-// for (let i = 0; i < 15; i++) {
-//   nextSequence();
-// };
+// Phone Version
