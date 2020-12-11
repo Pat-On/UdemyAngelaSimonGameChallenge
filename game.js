@@ -61,7 +61,6 @@ $(".btn").on('touchstart mousedown', function() {
   playSound(userChosenColour);
   animatePress(userChosenColour);
   checkAnswer(userClickedPattern.length - 1);
-  alert(this);
   return false;
 });
 
