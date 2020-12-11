@@ -9,21 +9,21 @@ let userClickedPattern = [];
 let level = 0;
 var start = false;
 
-$(document).touchstart(function(){
-  if(!start) {
-    $("#level-title").text("Level: " + level);
-    nextSequence();
-    start = true;
-  }
-});
-
-// $(document).keypress(function(){
+// $(document).touchstart(function(){
 //   if(!start) {
 //     $("#level-title").text("Level: " + level);
 //     nextSequence();
 //     start = true;
 //   }
 // });
+
+$(document).keypress(function(){
+  if(!start) {
+    $("#level-title").text("Level: " + level);
+    nextSequence();
+    start = true;
+  }
+});
 
 function nextSequence() {
   let randomNumber = Math.floor(Math.random() * 4);
@@ -41,16 +41,7 @@ function nextSequence() {
 
 // nextSequence();
 
-// $(".btn").click(function() {   // Why she used here function not a handler name.
-//   var userChosenColour = $(this).attr("id");
-//   userClickedPattern.push(userChosenColour);
-//   console.log(userClickedPattern);
-//   playSound(userChosenColour);
-//   animatePress(userChosenColour);
-//   checkAnswer(userClickedPattern.length - 1);
-// });
-
-$(".btn").touchstart(function() {   // Why she used here function not a handler name.
+$(".btn").click(function() {   // Why she used here function not a handler name.
   var userChosenColour = $(this).attr("id");
   userClickedPattern.push(userChosenColour);
   console.log(userClickedPattern);
@@ -58,6 +49,15 @@ $(".btn").touchstart(function() {   // Why she used here function not a handler 
   animatePress(userChosenColour);
   checkAnswer(userClickedPattern.length - 1);
 });
+
+// $(".btn").touchstart(function() {   // Why she used here function not a handler name.
+//   var userChosenColour = $(this).attr("id");
+//   userClickedPattern.push(userChosenColour);
+//   console.log(userClickedPattern);
+//   playSound(userChosenColour);
+//   animatePress(userChosenColour);
+//   checkAnswer(userClickedPattern.length - 1);
+// });
 
 
 function playSound(name) {
