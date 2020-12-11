@@ -17,6 +17,15 @@ var start = false;
 //   }
 // });
 
+$(document).on('touchstart', function() {
+    if(!start) {
+      $("#level-title").text("Level: " + level);
+      nextSequence();
+      start = true;
+      console.log("It is working");
+    }
+});
+
 $(document).keypress(function(){
   if(!start) {
     $("#level-title").text("Level: " + level);
@@ -41,7 +50,7 @@ function nextSequence() {
 
 // nextSequence();
 
-$(".btn").click(function() {   // Why she used here function not a handler name.
+$(".btn").click(function() {  
   var userChosenColour = $(this).attr("id");
   userClickedPattern.push(userChosenColour);
   console.log(userClickedPattern);
@@ -50,14 +59,14 @@ $(".btn").click(function() {   // Why she used here function not a handler name.
   checkAnswer(userClickedPattern.length - 1);
 });
 
-// $(".btn").touchstart(function() {   // Why she used here function not a handler name.
-//   var userChosenColour = $(this).attr("id");
-//   userClickedPattern.push(userChosenColour);
-//   console.log(userClickedPattern);
-//   playSound(userChosenColour);
-//   animatePress(userChosenColour);
-//   checkAnswer(userClickedPattern.length - 1);
-// });
+$(".btn").on('touchstart', function() {
+  var userChosenColour = $(this).attr("id");
+  userClickedPattern.push(userChosenColour);
+  console.log(userClickedPattern);
+  playSound(userChosenColour);
+  animatePress(userChosenColour);
+  checkAnswer(userClickedPattern.length - 1);
+});
 
 
 function playSound(name) {
