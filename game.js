@@ -26,13 +26,13 @@ $(document).on('touchstart', function() {
     }
 });
 
-$(document).keypress(function(){
-  if(!start) {
-    $("#level-title").text("Level: " + level);
-    nextSequence();
-    start = true;
-  }
-});
+// $(document).keypress(function(){
+//   if(!start) {
+//     $("#level-title").text("Level: " + level);
+//     nextSequence();
+//     start = true;
+//   }
+// });
 
 function nextSequence() {
   let randomNumber = Math.floor(Math.random() * 4);
@@ -50,14 +50,14 @@ function nextSequence() {
 
 // nextSequence();
 
-$(".btn").click(function() {  
-  var userChosenColour = $(this).attr("id");
-  userClickedPattern.push(userChosenColour);
-  console.log(userClickedPattern);
-  playSound(userChosenColour);
-  animatePress(userChosenColour);
-  checkAnswer(userClickedPattern.length - 1);
-});
+// $(".btn").click(function() {
+//   var userChosenColour = $(this).attr("id");
+//   userClickedPattern.push(userChosenColour);
+//   console.log(userClickedPattern);
+//   playSound(userChosenColour);
+//   animatePress(userChosenColour);
+//   checkAnswer(userClickedPattern.length - 1);
+// });
 
 $(".btn").on('touchstart', function() {
   var userChosenColour = $(this).attr("id");
