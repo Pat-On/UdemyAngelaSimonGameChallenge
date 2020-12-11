@@ -12,13 +12,13 @@ var start = false;
 
 
 $(document).on('touchstart mousedown', function() {
-    if(!start) {
-      $("#level-title").text("Level: " + level);
-      nextSequence();
-      start = true;
-      console.log("It is working");
-      return false;
-    }
+  if (!start) {
+    $("#level-title").text("Level: " + level);
+    nextSequence();
+    start = true;
+    console.log("It is working");
+    return false;
+  }
 });
 
 // $(document).keypress(function(){
@@ -35,9 +35,19 @@ function nextSequence() {
   let randomChosenColour = buttonColours[randomNumber];
   console.log(randomChosenColour);
   gamePattern.push(randomChosenColour);
-  $("#" + randomChosenColour).fadeIn(100).fadeOut(100).fadeIn(100);
-  var audio = new Audio("sounds/" + randomChosenColour + ".mp3");
-  playSound(randomChosenColour); // audio.play only when user is going to click something
+  let i = 0;                  //  set your counter to 1
+  function myLoop() {         //  create a loop function
+    setTimeout(function() {   //  call a 3s setTimeout when the loop is called
+      $("#" + gamePattern[i]).fadeIn(100).fadeOut(100).fadeIn(100);
+      var audio = new Audio("sounds/" + gamePattern[i] + ".mp3");
+      playSound(gamePattern[i]); // audio.play only when user is going to click something
+      i++;                    //  increment the counter
+      if (i < gamePattern.length) {           //  if the counter < 10, call the loop function
+        myLoop();             //  ..  again which will trigger another
+      }                       //  ..  setTimeout()
+    }, 500)
+  }
+  myLoop();
   level++;
   $("#level-title").text("Level " + level);
   userClickedPattern = [];
@@ -73,14 +83,14 @@ function playSound(name) {
 function animatePress(currentColour) {
   console.log(currentColour);
   $("#" + currentColour).addClass("pressed");
-  setTimeout(function () {
+  setTimeout(function() {
     $("#" + currentColour).removeClass("pressed");
   }, 100);
 };
 
 function animatedGameOver() {
   $("body").addClass("game-over");
-  setTimeout(function () {
+  setTimeout(function() {
     $("body").removeClass("game-over");
   }, 200);
 };
@@ -92,10 +102,10 @@ function startOver() {
 }
 
 function checkAnswer(currentLevel) {
-  if (gamePattern[currentLevel] === userClickedPattern[currentLevel]){
+  if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
     console.log("SUCCESS");
-    if (userClickedPattern.length === gamePattern.length){
-      setTimeout(function () {
+    if (userClickedPattern.length === gamePattern.length) {
+      setTimeout(function() {
         nextSequence();
       }, 1000);
     }

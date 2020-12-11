@@ -21,6 +21,7 @@ table, caption, tbody, tfoot, thead, tr, th, td, a {
 body {
   text-align: center;
   background-color: #011F3F;
+  width: 100%;
 }
 
 #level-title {
@@ -33,7 +34,7 @@ body {
 .container {
   display: flex;
   width: 100%;
-  margin: auto;
+  margin: 0;
   flex-direction: row;
   justify-content: center;
 }
