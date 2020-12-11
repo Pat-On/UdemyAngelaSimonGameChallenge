@@ -11,7 +11,7 @@ var start = false;
 
 
 
-$(document).on('touchstart click', function() {
+$(document).on('touchstart', function() {
     if(!start) {
       $("#level-title").text("Level: " + level);
       nextSequence();
@@ -54,7 +54,7 @@ function nextSequence() {
 //   checkAnswer(userClickedPattern.length - 1);
 // });
 
-$(".btn").on('touchstart click', function() {
+$(".btn").on('touchstart', function() {
   var userChosenColour = $(this).attr("id");
   userClickedPattern.push(userChosenColour);
   console.log(userClickedPattern);
