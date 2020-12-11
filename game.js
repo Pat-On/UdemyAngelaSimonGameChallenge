@@ -9,15 +9,9 @@ let userClickedPattern = [];
 let level = 0;
 var start = false;
 
-// $(document).touchstart(function(){
-//   if(!start) {
-//     $("#level-title").text("Level: " + level);
-//     nextSequence();
-//     start = true;
-//   }
-// });
 
-$(document).on('touchenter', function() {
+
+$(document).on('touchstart click', function() {
     if(!start) {
       $("#level-title").text("Level: " + level);
       nextSequence();
@@ -59,7 +53,7 @@ function nextSequence() {
 //   checkAnswer(userClickedPattern.length - 1);
 // });
 
-$(".btn").on('touchenter', function() {
+$(".btn").on('touchstart click', function() {
   var userChosenColour = $(this).attr("id");
   userClickedPattern.push(userChosenColour);
   console.log(userClickedPattern);
