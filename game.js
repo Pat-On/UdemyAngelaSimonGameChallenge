@@ -17,6 +17,7 @@ $(document).on('touchstart click', function() {
       nextSequence();
       start = true;
       console.log("It is working");
+      return false;
     }
 });
 
@@ -60,6 +61,7 @@ $(".btn").on('touchstart click', function() {
   playSound(userChosenColour);
   animatePress(userChosenColour);
   checkAnswer(userClickedPattern.length - 1);
+  return false;
 });
 
 
